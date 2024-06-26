@@ -9,7 +9,7 @@ spec:
     canary:
       steps:
       - setWeight: 50
-      - pause: {duration: 60s} # Pause for 60 seconds or until manually resumed
+      - pause: {} # Pause until manually resumed
   selector:
     matchLabels:
       app: nginx
@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ptader/nginx:v1 # Initial image is v1
+        image: ptader/nginx:v1
         ports:
         - containerPort: 80
