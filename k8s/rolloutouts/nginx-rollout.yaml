@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: nginx
+  namespace: default
+spec:
+  replicas: 2
+  strategy:
+    canary:
+      steps:
+      - setWeight: 50
+      - pause: {duration: 60s} # Pause for 60 seconds or until manually resumed
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: ptader/nginx:v1 # Initial image is v1
+        ports:
+        - containerPort: 80
