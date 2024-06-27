@@ -8,8 +8,13 @@ spec:
   strategy:
     canary:
       steps:
+      - setWeight: 10
+        pause:
+          duration: 10m # Pause for 10 minutes at 10%
       - setWeight: 50
-      - pause: {} # Pause until manually resumed
+        pause:
+          duration: 5m  # Pause for 5 minutes at 50%
+      - setWeight: 100  # Rollout to 100%
   selector:
     matchLabels:
       app: nginx
@@ -20,6 +25,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ptader/nginx:v1
+        image: ptader/nginx:v2 # Update to v2
         ports:
         - containerPort: 80
