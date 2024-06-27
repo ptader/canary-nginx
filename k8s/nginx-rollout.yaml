@@ -9,9 +9,9 @@ spec:
     canary:
       steps:
       - setWeight: 10
-      - pause: {duration: 10m}
+      - pause: {duration: 2m}
       - setWeight: 50
-      - pause: {duration: 5m}
+      - pause: {duration: 1m}
       - setWeight: 100  # Rollout to 100%
   selector:
     matchLabels:
@@ -23,6 +23,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ptader/nginx:v2 # Update to v2
+        image: ptader/nginx:v1 # Update to v2
         ports:
         - containerPort: 80
