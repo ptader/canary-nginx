@@ -9,11 +9,9 @@ spec:
     canary:
       steps:
       - setWeight: 10
-        pause:
-          duration: 10m # Pause for 10 minutes at 10%
+      - pause: {duration: 10m}
       - setWeight: 50
-        pause:
-          duration: 5m  # Pause for 5 minutes at 50%
+      - pause: {duration: 5m}
       - setWeight: 100  # Rollout to 100%
   selector:
     matchLabels:
