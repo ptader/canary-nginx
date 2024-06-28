@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: tader.net
+  - host: nginx-canary.tader.net
     http:
       paths:
       - path: /
