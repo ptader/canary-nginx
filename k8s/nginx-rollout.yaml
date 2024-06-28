@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: nginx
+  name: nginx-canary
   namespace: default
 spec:
   replicas: 4
@@ -15,14 +15,14 @@ spec:
       - setWeight: 100  # Rollout to 100%
   selector:
     matchLabels:
-      app: nginx
+      app: nginx-canary
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx-canary
     spec:
       containers:
-      - name: nginx
+      - name: nginx-canary
         image: ptader/nginx:v1 # Update to v2
         ports:
         - containerPort: 80
