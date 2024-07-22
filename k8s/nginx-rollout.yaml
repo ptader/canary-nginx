@@ -4,14 +4,14 @@ metadata:
   name: nginx-canary
   namespace: default
 spec:
-  replicas: 4
+  replicas: 2
   strategy:
     canary:
       steps:
       - setWeight: 10
       - pause: {duration: 2m}
-      - setWeight: 50
-      - pause: {duration: 1m}
+#      - setWeight: 50
+#      - pause: {duration: 1m}
       - setWeight: 100  # Rollout to 100%
   selector:
     matchLabels:
