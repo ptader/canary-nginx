@@ -23,6 +23,6 @@ spec:
     spec:
       containers:
       - name: nginx-canary
-        image: ptader/nginx:v1 # Update to v2
+        image: ptader/nginx:v2 # Update to v2
         ports:
         - containerPort: 80
